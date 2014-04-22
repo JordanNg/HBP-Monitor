@@ -13,6 +13,7 @@
 @interface AAViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *readings;
+@property (weak, nonatomic) IBOutlet UITextField *readingTextField;
 
 @end
 
@@ -40,14 +41,22 @@
     BloodSugar *reading = (BloodSugar *)self.readings[indexPath.row];
     NSLog(@"%@", reading);
     cell.textLabel.text = [[reading bloodReading] description];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", [[reading bloodReading] description], reading.notes];
-    cell.detailTextLabel.text = [reading.readingTime description];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", reading.readingTime, [[reading bloodReading] description]];
+    cell.detailTextLabel.text = [reading.notes description];
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", reading.notes, [[reading bloodReading] description]];
+//    cell.detailTextLabel.text = [reading.readingTime description];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.readings count];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BloodSugar *reading = self.readings[indexPath.row];
+    self.readingTextField.text = [reading.bloodReading description];
 }
 
 @end
