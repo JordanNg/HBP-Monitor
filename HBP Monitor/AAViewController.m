@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *readings;
 @property (weak, nonatomic) IBOutlet UITextField *readingTextField;
+@property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 
 @end
 
@@ -25,6 +26,12 @@
     NSLog(@"context set!");
     self.readings = [BloodSugar allReadingsInManagedObjectContext:self.context];
     [self.tableView reloadData];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+    
+    BloodSugar *reading = self.readings[indexPath.row];
+    [self displayReading:reading];
 }
 
 - (void)viewDidLoad
@@ -41,7 +48,7 @@
     BloodSugar *reading = (BloodSugar *)self.readings[indexPath.row];
     NSLog(@"%@", reading);
     cell.textLabel.text = [[reading bloodReading] description];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", reading.readingTime, [[reading bloodReading] description]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", [[reading bloodReading] description], reading.readingTime] ;
     cell.detailTextLabel.text = [reading.notes description];
 //    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", reading.notes, [[reading bloodReading] description]];
 //    cell.detailTextLabel.text = [reading.readingTime description];
@@ -56,7 +63,13 @@
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BloodSugar *reading = self.readings[indexPath.row];
-    self.readingTextField.text = [reading.bloodReading description];
+    [self displayReading:reading];
 }
 
+- (void) displayReading:(BloodSugar *)reading
+{
+    self.readingTextField.text = [reading.bloodReading description];
+    
+    self.notesTextView.text = [reading.notes description];
+}
 @end
