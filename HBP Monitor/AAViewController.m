@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSArray *readings;
 @property (weak, nonatomic) IBOutlet UITextField *readingTextField;
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
@@ -38,8 +39,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    AAAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    self.context = delegate.managedObjectContext;
+//    AAAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+//    self.context = delegate.managedObjectContext;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -60,7 +61,7 @@
     return [self.readings count];
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BloodSugar *reading = self.readings[indexPath.row];
     [self displayReading:reading];
@@ -71,5 +72,7 @@
     self.readingTextField.text = [reading.bloodReading description];
     
     self.notesTextView.text = [reading.notes description];
+    
+    [self.datePicker setDate:reading.readingTime animated:YES];
 }
 @end

@@ -29,6 +29,11 @@
     if (self.document.documentState == UIDocumentStateNormal) {
         self.managedObjectContext = self.document.managedObjectContext;
         [self loadReadingData];
+        
+        UINavigationController *nc = (UINavigationController *) self.window.rootViewController;
+        AAViewController *vc = (AAViewController *)[nc topViewController];
+        vc.context = self.managedObjectContext;
+        
     }
 }
 
