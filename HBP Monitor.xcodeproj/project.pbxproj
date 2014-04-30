@@ -11,6 +11,10 @@
 		B02771481905DDCE0046D6E1 /* BloodSugar+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = B02771471905DDCE0046D6E1 /* BloodSugar+Create.m */; };
 		B027714C1905E2E50046D6E1 /* BloodSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = B027714B1905E2E50046D6E1 /* BloodSugar.m */; };
 		B027714F1905E6DE0046D6E1 /* AADataEntryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B027714E1905E6DE0046D6E1 /* AADataEntryVC.m */; };
+		B053BC0F190AED1A001BD50A /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B053BC0E190AED1A001BD50A /* Button.png */; };
+		B053BC12190AEDBB001BD50A /* Button2.png in Resources */ = {isa = PBXBuildFile; fileRef = B053BC11190AEDBB001BD50A /* Button2.png */; };
+		B053BC14190AEFE4001BD50A /* AddMeasurmentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B053BC13190AEFE4001BD50A /* AddMeasurmentButton.png */; };
+		B0DA33A0190AFB15007679B2 /* BloodDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = B0DA339F190AFB15007679B2 /* BloodDrop.png */; };
 		B0EDB50318EE1F5200A4E438 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0EDB50218EE1F5200A4E438 /* Foundation.framework */; };
 		B0EDB50518EE1F5200A4E438 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0EDB50418EE1F5200A4E438 /* CoreGraphics.framework */; };
 		B0EDB50718EE1F5200A4E438 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0EDB50618EE1F5200A4E438 /* UIKit.framework */; };
@@ -45,6 +49,10 @@
 		B027714B1905E2E50046D6E1 /* BloodSugar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodSugar.m; sourceTree = "<group>"; };
 		B027714D1905E6DE0046D6E1 /* AADataEntryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AADataEntryVC.h; sourceTree = "<group>"; };
 		B027714E1905E6DE0046D6E1 /* AADataEntryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AADataEntryVC.m; sourceTree = "<group>"; };
+		B053BC0E190AED1A001BD50A /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
+		B053BC11190AEDBB001BD50A /* Button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button2.png; sourceTree = "<group>"; };
+		B053BC13190AEFE4001BD50A /* AddMeasurmentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddMeasurmentButton.png; sourceTree = "<group>"; };
+		B0DA339F190AFB15007679B2 /* BloodDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BloodDrop.png; sourceTree = "<group>"; };
 		B0EDB4FF18EE1F5200A4E438 /* HBP Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HBP Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0EDB50218EE1F5200A4E438 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B0EDB50418EE1F5200A4E438 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,6 +126,17 @@
 			name = Customized;
 			sourceTree = "<group>";
 		};
+		B053BC10190AED59001BD50A /* Button Images */ = {
+			isa = PBXGroup;
+			children = (
+				B0DA339F190AFB15007679B2 /* BloodDrop.png */,
+				B053BC13190AEFE4001BD50A /* AddMeasurmentButton.png */,
+				B053BC11190AEDBB001BD50A /* Button2.png */,
+				B053BC0E190AED1A001BD50A /* Button.png */,
+			);
+			name = "Button Images";
+			sourceTree = "<group>";
+		};
 		B0EDB4F618EE1F5200A4E438 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +187,7 @@
 		B0EDB50918EE1F5200A4E438 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B053BC10190AED59001BD50A /* Button Images */,
 				B0EDB50A18EE1F5200A4E438 /* HBP Monitor-Info.plist */,
 				B0EDB50B18EE1F5200A4E438 /* InfoPlist.strings */,
 				B0EDB50E18EE1F5200A4E438 /* main.m */,
@@ -272,7 +292,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0EDB51B18EE1F5200A4E438 /* Images.xcassets in Resources */,
+				B053BC0F190AED1A001BD50A /* Button.png in Resources */,
+				B053BC12190AEDBB001BD50A /* Button2.png in Resources */,
 				B0EDB50D18EE1F5200A4E438 /* InfoPlist.strings in Resources */,
+				B0DA33A0190AFB15007679B2 /* BloodDrop.png in Resources */,
+				B053BC14190AEFE4001BD50A /* AddMeasurmentButton.png in Resources */,
 				B0EDB51618EE1F5200A4E438 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
