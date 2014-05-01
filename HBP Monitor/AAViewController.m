@@ -35,12 +35,22 @@
     [self displayReading:reading];
 }
 
+-(NSString *)formattedReadingDate:(NSDate *)date
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+//    [format setDateFormat:@"MMM dd, yyyy HH:mm"];
+    [format setDateStyle:NSDateFormatterMediumStyle];
+    NSString *dateString = [format stringFromDate:date];
+
+    return dateString;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-//    AAAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-//    self.context = delegate.managedObjectContext;
+    //    AAAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    //    self.context = delegate.managedObjectContext;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,12 +58,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Reading Cell" forIndexPath:indexPath];
     BloodSugar *reading = (BloodSugar *)self.readings[indexPath.row];
     NSLog(@"%@", reading);
+    
+    
     cell.textLabel.text = [[reading bloodReading] description];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", [[reading bloodReading] description], reading.readingTime] ;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", [[reading bloodReading] description],
+                           [self formattedReadingDate:reading.readingTime]];
     cell.detailTextLabel.text = [reading.notes description];
 //    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", reading.notes, [[reading bloodReading] description]];
 //    cell.detailTextLabel.text = [reading.readingTime description];
     return cell;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

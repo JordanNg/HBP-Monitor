@@ -14,13 +14,14 @@
 
 - (void)loadReadingData
 {
-    // load Readings here.
+    // load Readings herae.
     NSDate *now = [NSDate date];
     [BloodSugar createReading:@42 readingTime: now notes:@"I ate Pizza" managedObjectContext:self.managedObjectContext];
     now = [now dateByAddingTimeInterval:60*60*24*1];
     [BloodSugar createReading:@250 readingTime: now notes:@"I ate Jello" managedObjectContext:self.managedObjectContext];
     now = [now dateByAddingTimeInterval:60*60*24*1];
     [BloodSugar createReading:@112 readingTime: now notes:@"I ate French Fries" managedObjectContext:self.managedObjectContext];
+
 }
 
 - (void)documentIsReady
