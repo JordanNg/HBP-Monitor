@@ -16,10 +16,18 @@
 @property (weak, nonatomic) IBOutlet UITextField *readingTextField;
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UIButton *addMeasurementButton;
 
 @end
 
 @implementation AAViewController
+- (IBAction)addMeasurementPressed:(UIButton *)sender {
+    self.addMeasurementButton.alpha = 0;
+    self.readingTextField.text = nil;
+    [self.datePicker setDate:[NSDate date] animated:YES];
+    self.notesTextView.text = nil;
+    
+}
 
 - (void)setContext:(NSManagedObjectContext *)context
 {
@@ -38,7 +46,6 @@
 -(NSString *)formattedReadingDate:(NSDate *)date
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-//    [format setDateFormat:@"MMM dd, yyyy HH:mm"];
     [format setDateStyle:NSDateFormatterMediumStyle];
     NSString *dateString = [format stringFromDate:date];
 
