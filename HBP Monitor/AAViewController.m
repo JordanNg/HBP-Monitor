@@ -17,16 +17,21 @@
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIButton *addMeasurementButton;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
 @implementation AAViewController
+
 - (IBAction)addMeasurementPressed:(UIButton *)sender {
     self.addMeasurementButton.alpha = 0;
     self.readingTextField.text = nil;
     [self.datePicker setDate:[NSDate date] animated:YES];
     self.notesTextView.text = nil;
     
+    self.saveButton.alpha = 1;
+    self.cancelButton.alpha = 1;
 }
 
 - (void)setContext:(NSManagedObjectContext *)context
