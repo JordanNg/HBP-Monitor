@@ -25,13 +25,34 @@
 @implementation AAViewController
 
 - (IBAction)addMeasurementPressed:(UIButton *)sender {
+    
+    //Clears the text fields and makes Add Measurement button disapear
     self.addMeasurementButton.alpha = 0;
     self.readingTextField.text = nil;
     [self.datePicker setDate:[NSDate date] animated:YES];
     self.notesTextView.text = nil;
     
+    //Save and Cancel buttons appear
     self.saveButton.alpha = 1;
     self.cancelButton.alpha = 1;
+}
+
+- (IBAction)cancelMeasurementPressed:(UIButton *)sender {
+    
+    //swithces back to the Add Measurement Button when cancel button is pressed
+    self.addMeasurementButton.alpha = 1;
+    self.saveButton.alpha = 0;
+    self.cancelButton.alpha = 0;
+    
+    //Resets all the data when cancel is pressed
+    self.readings = [BloodSugar allReadingsInManagedObjectContext:self.context];
+    [self.tableView reloadData];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+    
+    BloodSugar *reading = self.readings[indexPath.row];
+    [self displayReading:reading];
 }
 
 - (void)setContext:(NSManagedObjectContext *)context
