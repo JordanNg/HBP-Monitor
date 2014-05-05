@@ -32,6 +32,10 @@
     [self.datePicker setDate:[NSDate date] animated:YES];
     self.notesTextView.text = nil;
     
+    //Clear the selection
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    
+    
     //Save and Cancel buttons appear
     self.saveButton.alpha = 1;
     self.cancelButton.alpha = 1;
@@ -44,7 +48,7 @@
     self.saveButton.alpha = 0;
     self.cancelButton.alpha = 0;
     
-    //Resets all the data when cancel is pressed
+    //Resets data
     self.readings = [BloodSugar allReadingsInManagedObjectContext:self.context];
     [self.tableView reloadData];
     
@@ -55,12 +59,43 @@
     [self displayReading:reading];
 }
 
+- (IBAction)saveButtonPressed:(UIButton *)sender {
+    
+    NSLog (@"hi");
+    [BloodSugar createReading:@([self.readingTextField.text intValue])
+                  readingTime:self.datePicker.date
+                        notes:self.notesTextView.text
+         managedObjectContext:self.context];
+    [self reloadData];
+    
+    //Buttons change back
+    self.saveButton.alpha = 0;
+    self.cancelButton.alpha = 0;
+    self.addMeasurementButton.alpha = 1;
+    
+    //Resets data
+    self.readings = [BloodSugar allReadingsInManagedObjectContext:self.context];
+    [self.tableView reloadData];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+    
+    BloodSugar *reading = self.readings[indexPath.row];
+    [self displayReading:reading];
+
+}
+
+-(void)reloadData
+{
+    self.readings = [BloodSugar allReadingsInManagedObjectContext:self.context];
+    [self.tableView reloadData];
+}
+
 - (void)setContext:(NSManagedObjectContext *)context
 {
     _context = context;
     NSLog(@"context set!");
-    self.readings = [BloodSugar allReadingsInManagedObjectContext:self.context];
-    [self.tableView reloadData];
+    [self reloadData];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];

@@ -29,7 +29,7 @@
     NSLog(@"doc is ready");
     if (self.document.documentState == UIDocumentStateNormal) {
         self.managedObjectContext = self.document.managedObjectContext;
-        [self loadReadingData];
+//        [self loadReadingData];
         
         UINavigationController *nc = (UINavigationController *) self.window.rootViewController;
         AAViewController *vc = (AAViewController *)[nc topViewController];
